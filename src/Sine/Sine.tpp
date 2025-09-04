@@ -26,9 +26,18 @@ void Sine<T>::config(T A_, T f_, T phi_, uint64_t t_us_, uint64_t dt_us_)
 }
 
 template <typename T>
-T Sine<T>::generate(uint64_t t)
+T Sine<T>::generate()
 {
-    return A * std::sin(w * (T)t * (T)MICRO + phi);
+    T y = A * std::sin(w * (T)t_us * (T)MICRO + phi);
+    t_us += dt_us;
+    return y;
+}
+
+template <typename T>
+T Sine<T>::generate(uint64_t t_us_)
+{
+    t_us = t_us_;
+    return A * std::sin(w * (T)t_us * (T)MICRO + phi);
 }
 
 template <typename T>

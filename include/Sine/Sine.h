@@ -13,7 +13,8 @@ public:
     ~Sine();
     void init();
     void config(T A, T f, T phi, uint64_t t_us, uint64_t dt_us);
-    T generate(uint64_t t);
+    T generate();
+    T generate(uint64_t t_us_);
     void reset();
 
 private:
