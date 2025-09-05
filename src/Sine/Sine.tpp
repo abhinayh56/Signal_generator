@@ -37,7 +37,9 @@ template <typename T>
 T Sine<T>::generate(uint64_t t_us_)
 {
     t_us = t_us_;
-    return A * std::sin(w * (T)t_us * (T)MICRO + phi);
+    T y = A * std::sin(w * (T)t_us * (T)MICRO + phi);
+    t_us += dt_us;
+    return y;
 }
 
 template <typename T>
